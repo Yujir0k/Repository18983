@@ -1,0 +1,46 @@
+{
+  "generated_at_utc": "2026-04-08T14:01:07.491947+00:00",
+  "stage": "stage1_offline_eval",
+  "metric_definition": "WAPE + |Relative Bias|",
+  "calibration_days": 7,
+  "horizons": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "ml_metrics_source": "C:\\rwb_train_artifacts\\status_semantics_export_bundle_artifacts\\reports\\metrics_by_horizon.csv",
+  "averages_macro": [
+    {
+      "variant": "ml",
+      "horizons": 10,
+      "mean_score": 0.24835965627178597,
+      "mean_wape": 0.2481006757529755,
+      "mean_rbias": 0.0002589805188104407
+    },
+    {
+      "variant": "strong_baseline_blend_roll48_same7d",
+      "horizons": 10,
+      "mean_score": 0.30263288494142093,
+      "mean_wape": 0.29627462086282624,
+      "mean_rbias": 0.006358264078594722
+    },
+    {
+      "variant": "primitive_baseline_same_4w",
+      "horizons": 10,
+      "mean_score": 0.3983726782373816,
+      "mean_wape": 0.3514610151166858,
+      "mean_rbias": 0.046911663120695724
+    }
+  ],
+  "output_files": {
+    "by_horizon": "model\\offline_eval_stage1_by_horizon.csv",
+    "long": "model\\offline_eval_stage1_long.csv"
+  }
+}

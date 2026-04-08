@@ -1,0 +1,105 @@
+{
+  "generated_at_utc": "2026-04-08T14:05:43.331309+00:00",
+  "stage": "stage2_analytics_artifacts",
+  "official_metric_block": {
+    "metric_name": "WAPE + |Relative Bias|",
+    "variants": [
+      "ml",
+      "strong_baseline_blend_roll48_same7d",
+      "primitive_baseline_same_4w"
+    ],
+    "macro_mean_score": {
+      "ml": 0.24835965627178597,
+      "strong_baseline_blend_roll48_same7d": 0.30263288494142093,
+      "primitive_baseline_same_4w": 0.39837267823738154
+    },
+    "relative_improvement_pct": {
+      "ml_vs_strong_baseline": 17.933685124847006,
+      "ml_vs_primitive_baseline": 37.65645340672839
+    },
+    "note": "Official block is sourced from stage1 offline evaluation only."
+  },
+  "proxy_metric_block": {
+    "scope": "Calibration-window rows, per office x horizon. Auxiliary only.",
+    "comparison": "ML vs strong baseline (blend_roll48_same7d)",
+    "definitions": {
+      "win_rate": "share of rows where |error_ml| < |error_strong|",
+      "tie_rate": "share of rows where |error_ml| == |error_strong|",
+      "expected_loss_abs_mean": "mean(max(|error_ml| - |error_strong|, 0)) in target units",
+      "delta_abs_err_mean": "mean(|error_ml| - |error_strong|), negative means ML better",
+      "expected_loss_wape_like": "sum(max(|error_ml|-|error_strong|,0)) / sum(y_true)"
+    },
+    "global_aggregate": {
+      "rows": 3305000,
+      "sum_y_true": 241210280.0,
+      "win_rate": 0.6255863842662632,
+      "tie_rate": 0.015595158850226928,
+      "expected_loss_abs_mean": 2.5115965632043955,
+      "expected_gain_abs_mean": 7.313165516781611,
+      "delta_abs_err_mean": -4.801568953577215,
+      "expected_loss_wape_like": 0.034413237451532026
+    },
+    "note": "Proxy block is not the competition metric and must not be shown as official KPI."
+  },
+  "sources": {
+    "stage1_by_horizon": "model\\offline_eval_stage1_by_horizon.csv",
+    "stage1_summary": "model\\offline_eval_stage1_summary.json",
+    "model_artifact_root": "C:\\rwb_train_artifacts\\status_semantics_export_bundle_artifacts"
+  },
+  "output_files": {
+    "summary": "model\\analytics_stage2_summary.json",
+    "by_horizon_csv": "model\\analytics_stage2_by_horizon.csv",
+    "by_horizon_json": "model\\analytics_stage2_by_horizon.json",
+    "office_horizon_proxy_csv": "model\\analytics_stage2_office_horizon_proxy.csv",
+    "office_horizon_proxy_json": "model\\analytics_stage2_office_horizon_proxy.json",
+    "stage1_by_horizon_source": "model\\offline_eval_stage1_by_horizon.csv",
+    "stage1_summary_source": "model\\offline_eval_stage1_summary.json",
+    "artifact_root_source": "C:\\rwb_train_artifacts\\status_semantics_export_bundle_artifacts"
+  },
+  "stage1_snapshot": {
+    "generated_at_utc": "2026-04-08T14:01:07.491947+00:00",
+    "stage": "stage1_offline_eval",
+    "metric_definition": "WAPE + |Relative Bias|",
+    "calibration_days": 7,
+    "horizons": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "ml_metrics_source": "C:\\rwb_train_artifacts\\status_semantics_export_bundle_artifacts\\reports\\metrics_by_horizon.csv",
+    "averages_macro": [
+      {
+        "variant": "ml",
+        "horizons": 10,
+        "mean_score": 0.24835965627178597,
+        "mean_wape": 0.2481006757529755,
+        "mean_rbias": 0.0002589805188104407
+      },
+      {
+        "variant": "strong_baseline_blend_roll48_same7d",
+        "horizons": 10,
+        "mean_score": 0.30263288494142093,
+        "mean_wape": 0.29627462086282624,
+        "mean_rbias": 0.006358264078594722
+      },
+      {
+        "variant": "primitive_baseline_same_4w",
+        "horizons": 10,
+        "mean_score": 0.3983726782373816,
+        "mean_wape": 0.3514610151166858,
+        "mean_rbias": 0.046911663120695724
+      }
+    ],
+    "output_files": {
+      "by_horizon": "model\\offline_eval_stage1_by_horizon.csv",
+      "long": "model\\offline_eval_stage1_long.csv"
+    }
+  }
+}

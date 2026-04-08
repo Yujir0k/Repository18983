@@ -1,0 +1,77 @@
+{
+  "generated_at_utc": "2026-04-08T14:11:59.955720+00:00",
+  "stage": "stage3_trust_score",
+  "anchor_timestamp_input": "2025-05-30T10:30:00",
+  "anchor_timestamp_utc": "2025-05-30T07:30:00+00:00",
+  "metric_role": "policy_confidence_proxy",
+  "official_metric_guardrail": "Official competition metric remains WAPE + |Relative Bias|.",
+  "agreement_mode": "neutral",
+  "agreement_mode_note": "neutral: agreement component fixed at 0.5 per ablation result; signal does not affect trust score.",
+  "policy_calibration": {
+    "mode": "none",
+    "applied": false,
+    "note": "No policy calibration applied.",
+    "before_global": {
+      "min": 39.1,
+      "p10": 53.1,
+      "p50": 63.4,
+      "p90": 73.81000000000003,
+      "max": 80.8,
+      "share_ge_70": 0.2087,
+      "share_ge_85": 0.0
+    },
+    "after_global": {
+      "min": 39.1,
+      "p10": 53.1,
+      "p50": 63.4,
+      "p90": 73.81000000000003,
+      "max": 80.8,
+      "share_ge_70": 0.2087,
+      "share_ge_85": 0.0
+    },
+    "per_horizon": {}
+  },
+  "weights": {
+    "horizon": 0.2,
+    "stability": 0.16,
+    "agreement_with_blend": 0.18,
+    "route_error_history": 0.18,
+    "office_error_history": 0.14,
+    "history_completeness": 0.08,
+    "freshness": 0.06
+  },
+  "signals": {
+    "horizon": "Higher trust for closer horizons.",
+    "stability": "Route-level variability over recent history (lower CV -> higher trust).",
+    "agreement_with_blend": "Agreement with strong baseline blend_roll48_same7d at horizon slot (mode=neutral).",
+    "route_error_history": "Route historical WAPE profile (lower error -> higher trust).",
+    "office_error_history": "Office x horizon expected loss vs strong baseline from stage2 proxy.",
+    "history_completeness": "Coverage of route history in history_tail.",
+    "freshness": "Staleness of latest route data relative to anchor timestamp.",
+    "empirical_win_rate": "Historical office x horizon win-rate of ML vs strong baseline."
+  },
+  "global_stats": {
+    "rows": 10000,
+    "routes": 1000,
+    "horizons": 10,
+    "trust_score_pct_mean": 63.26365,
+    "trust_score_pct_p10": 53.1,
+    "trust_score_pct_p50": 63.4,
+    "trust_score_pct_p90": 73.81000000000003
+  },
+  "inputs": {
+    "submission_path": "model\\submission_stable_export_bundle.csv",
+    "inference_summary_path": ".cache\\inference-summary.json",
+    "history_tail_path": "model\\history_tail.parquet",
+    "latest_snapshot_path": "model\\latest_snapshot.parquet",
+    "route_wape_path": "model\\route_wape_7d.json",
+    "stage2_office_proxy_path": "model\\analytics_stage2_office_horizon_proxy.csv",
+    "stage2_by_horizon_path": "model\\analytics_stage2_by_horizon.csv"
+  },
+  "output_files": {
+    "trust_route_horizon_csv": "model\\trust_stage3_route_horizon.csv",
+    "trust_route_horizon_json": "model\\trust_stage3_route_horizon.json",
+    "trust_lookup_json": "model\\trust_stage3_lookup.json",
+    "trust_summary_json": "model\\trust_stage3_summary.json"
+  }
+}

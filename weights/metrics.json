@@ -1,0 +1,126 @@
+{
+  "formula": {
+    "wape": "sum(abs(y_pred - y_true)) / sum(y_true)",
+    "relative_bias": "abs((sum(y_pred) / sum(y_true)) - 1)"
+  },
+  "per_horizon": {
+    "1": {
+      "samples": 335000,
+      "model": {
+        "wape": 0.14448696374893188,
+        "relative_bias": 6.4849853515625e-05
+      },
+      "baseline": {
+        "wape": 0.1793561726808548,
+        "relative_bias": 9.584426879882812e-05
+      }
+    },
+    "2": {
+      "samples": 334000,
+      "model": {
+        "wape": 0.20373934507369995,
+        "relative_bias": 6.0558319091796875e-05
+      },
+      "baseline": {
+        "wape": 0.27090850472450256,
+        "relative_bias": 0.00013148784637451172
+      }
+    },
+    "3": {
+      "samples": 333000,
+      "model": {
+        "wape": 0.24506627023220062,
+        "relative_bias": 8.720159530639648e-05
+      },
+      "baseline": {
+        "wape": 0.2909218370914459,
+        "relative_bias": 0.0005031824111938477
+      }
+    },
+    "4": {
+      "samples": 332000,
+      "model": {
+        "wape": 0.2701724171638489,
+        "relative_bias": 0.00011169910430908203
+      },
+      "baseline": {
+        "wape": 0.2948988676071167,
+        "relative_bias": 0.0005489587783813477
+      }
+    },
+    "5": {
+      "samples": 331000,
+      "model": {
+        "wape": 0.27248647809028625,
+        "relative_bias": 2.3245811462402344e-05
+      },
+      "baseline": {
+        "wape": 0.2975209057331085,
+        "relative_bias": 0.000662684440612793
+      }
+    },
+    "6": {
+      "samples": 330000,
+      "model": {
+        "wape": 0.27457356452941895,
+        "relative_bias": 5.728006362915039e-05
+      },
+      "baseline": {
+        "wape": 0.30156347155570984,
+        "relative_bias": 0.0003827810287475586
+      }
+    },
+    "7": {
+      "samples": 329000,
+      "model": {
+        "wape": 0.27469417452812195,
+        "relative_bias": 8.356571197509766e-05
+      },
+      "baseline": {
+        "wape": 0.3015197217464447,
+        "relative_bias": 0.00048804283142089844
+      }
+    },
+    "8": {
+      "samples": 328000,
+      "model": {
+        "wape": 0.27577921748161316,
+        "relative_bias": 3.2067298889160156e-05
+      },
+      "baseline": {
+        "wape": 0.3033379912376404,
+        "relative_bias": 0.0009365677833557129
+      }
+    },
+    "9": {
+      "samples": 327000,
+      "model": {
+        "wape": 0.27529650926589966,
+        "relative_bias": 6.0617923736572266e-05
+      },
+      "baseline": {
+        "wape": 0.3052619397640228,
+        "relative_bias": 0.0004392862319946289
+      }
+    },
+    "10": {
+      "samples": 326000,
+      "model": {
+        "wape": 0.2764502763748169,
+        "relative_bias": 6.99162483215332e-05
+      },
+      "baseline": {
+        "wape": 0.30159318447113037,
+        "relative_bias": 0.0011058449745178223
+      }
+    }
+  },
+  "model": {
+    "wape": 0.25098609924316406,
+    "relative_bias": 3.62396240234375e-05
+  },
+  "baseline": {
+    "wape": 0.2844674587249756,
+    "relative_bias": 1.7404556274414062e-05
+  }
+}

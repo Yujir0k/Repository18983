@@ -1,0 +1,44 @@
+{
+  "generated_at_utc": "2026-04-08T14:10:21.283740+00:00",
+  "stage": "stage3_trust_ablation",
+  "scope": "Calibration-window backtest rows with real target_2h.",
+  "official_metric_guardrail": "Official KPI remains WAPE + |Relative Bias| from stage1.",
+  "inputs": {
+    "train_path": "C:\\rwb_train_data\\train_team_track.parquet",
+    "artifact_root": "C:\\rwb_train_artifacts\\status_semantics_export_bundle_artifacts",
+    "stage2_office_proxy_path": "model\\analytics_stage2_office_horizon_proxy.csv",
+    "stage2_by_horizon_path": "model\\analytics_stage2_by_horizon.csv",
+    "route_wape_path": "C:\\rwb_train_artifacts\\status_semantics_export_bundle_artifacts\\route_wape_7d.json",
+    "history_tail_path": "C:\\rwb_train_artifacts\\status_semantics_export_bundle_artifacts\\history_tail.parquet",
+    "base_col": "base_blend_roll48_same7d",
+    "rows_evaluated": 3305000
+  },
+  "formula": {
+    "final": "clip(0.55 * weighted_components + 0.45 * empirical_blended, 0, 1)",
+    "weights": {
+      "horizon": 0.2,
+      "stability": 0.16,
+      "agreement": 0.18,
+      "route_error": 0.18,
+      "office_error": 0.14,
+      "completeness": 0.08,
+      "freshness": 0.06
+    }
+  },
+  "agreement_ablation_result": {
+    "full_auto_expected_loss_wape_like": 0.02641575399006639,
+    "no_agreement_auto_expected_loss_wape_like": 0.02443352514248515,
+    "delta_auto_expected_loss_wape_like": -0.0019822288475812404,
+    "full_auc_binned": 0.5266647665803121,
+    "no_agreement_auc_binned": 0.5417897532545664,
+    "delta_auc_binned": 0.015124986674254215,
+    "full_auto_vs_manual_win_lift": 0.037085575358464684,
+    "no_agreement_auto_vs_manual_win_lift": 0.07227059300972094,
+    "delta_auto_vs_manual_win_lift": 0.035185017651256256
+  },
+  "output_files": {
+    "variants_csv": "model\\trust_stage3_ablation_variants.csv",
+    "by_horizon_csv": "model\\trust_stage3_ablation_by_horizon.csv",
+    "summary_json": "model\\trust_stage3_ablation_summary.json"
+  }
+}

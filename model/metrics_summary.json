@@ -1,0 +1,35 @@
+{
+  "variant": "status_semantics_export_bundle",
+  "mean_calib_metric": 0.24835965627178608,
+  "mean_wape": 0.24810067575297562,
+  "mean_rbias": 0.0002589805188104921,
+  "mean_mae": 18.1066170751485,
+  "mean_rmse": 34.558703832843214,
+  "mean_smape": 0.31870675481063593,
+  "total_under_capacity_units": 29903043.77365039,
+  "total_over_capacity_units": 29871333.710976526,
+  "chosen_base_by_horizon": {
+    "1": "blend_roll48_same7d",
+    "2": "blend_roll48_same7d",
+    "3": "blend_roll48_same7d",
+    "4": "blend_roll48_same7d",
+    "5": "blend_roll48_same7d",
+    "6": "blend_roll48_same7d",
+    "7": "blend_roll48_same7d",
+    "8": "blend_roll48_same7d",
+    "9": "blend_roll48_same7d",
+    "10": "blend_roll48_same7d"
+  },
+  "calibration_mode_by_horizon": {
+    "1": "office_shrink",
+    "2": "office_shrink",
+    "3": "office_shrink",
+    "4": "office_shrink",
+    "5": "office_shrink",
+    "6": "office_shrink",
+    "7": "office_shrink",
+    "8": "office_shrink",
+    "9": "office_shrink",
+    "10": "office_shrink"
+  }
+}

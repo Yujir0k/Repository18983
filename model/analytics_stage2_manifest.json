@@ -1,0 +1,13 @@
+{
+  "generated_at_utc": "2026-04-08T14:05:43.332236+00:00",
+  "stage": "stage2_analytics_artifacts",
+  "official_metric_block_source": "model\\offline_eval_stage1_by_horizon.csv",
+  "proxy_metric_block_source": "calibration window recalculation via saved model artifacts",
+  "files": {
+    "summary": "model\\analytics_stage2_summary.json",
+    "by_horizon_csv": "model\\analytics_stage2_by_horizon.csv",
+    "by_horizon_json": "model\\analytics_stage2_by_horizon.json",
+    "office_horizon_proxy_csv": "model\\analytics_stage2_office_horizon_proxy.csv",
+    "office_horizon_proxy_json": "model\\analytics_stage2_office_horizon_proxy.json"
+  }
+}

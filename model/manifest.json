@@ -1,0 +1,23 @@
+{
+  "variant": "status_semantics_export_bundle",
+  "train_path": "C:\\rwb_train_data\\train_team_track.parquet",
+  "test_path": "C:\\rwb_train_data\\test_team_track.parquet",
+  "submission_path": "C:\\rwb_train_artifacts\\submission.csv",
+  "variant_submission_path": "C:\\rwb_train_artifacts\\submission_status_semantics_export_bundle.csv",
+  "artifact_root": "C:\\rwb_train_artifacts\\status_semantics_export_bundle_artifacts",
+  "models_dir": "C:\\rwb_train_artifacts\\status_semantics_export_bundle_artifacts\\models",
+  "reports_dir": "C:\\rwb_train_artifacts\\status_semantics_export_bundle_artifacts\\reports",
+  "calibration_dir": "C:\\rwb_train_artifacts\\status_semantics_export_bundle_artifacts\\calibration",
+  "history_tail_file": "C:\\rwb_train_artifacts\\status_semantics_export_bundle_artifacts\\history_tail.parquet",
+  "latest_snapshot_file": "C:\\rwb_train_artifacts\\status_semantics_export_bundle_artifacts\\latest_snapshot.parquet",
+  "feature_schema_file": "C:\\rwb_train_artifacts\\status_semantics_export_bundle_artifacts\\feature_schema.json",
+  "metrics_by_horizon_file": "C:\\rwb_train_artifacts\\status_semantics_export_bundle_artifacts\\reports\\metrics_by_horizon.csv",
+  "metrics_summary_file": "C:\\rwb_train_artifacts\\status_semantics_export_bundle_artifacts\\reports\\metrics_summary.json",
+  "route_wape_7d_file": "C:\\rwb_train_artifacts\\status_semantics_export_bundle_artifacts\\route_wape_7d.json",
+  "office_scales_file": "C:\\rwb_train_artifacts\\status_semantics_export_bundle_artifacts\\calibration\\office_scales.parquet",
+  "notes": [
+    "history_tail.parquet stores the last 672 rows per route for feature recomputation in inference.",
+    "Each horizon model is saved as LightGBM text in models/.",
+    "Per-horizon calibration metadata is stored in calibration/hXX_meta.json."
+  ]
+}
