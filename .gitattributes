@@ -1,0 +1,7 @@
+* text=auto
+
+# Prevent line-ending conversion for binary and model artifacts.
+*.parquet -text
+*.npz -text
+*.ipynb -text
+model/h*.txt -text

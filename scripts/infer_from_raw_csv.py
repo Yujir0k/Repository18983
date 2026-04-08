@@ -1,6 +1,7 @@
 import argparse
 import json
 from pathlib import Path
+import tempfile
 from typing import Dict, List, Optional, Tuple
 
 import lightgbm as lgb
@@ -251,6 +252,45 @@ def _apply_calibration(
     return np.maximum(calibrated, 0.0)
 
 
+def _prepare_lightgbm_model_for_loading(model_path: Path) -> Tuple[Path, Optional[Path]]:
+    """
+    LightGBM text model files contain byte-based tree offsets (tree_sizes).
+    If Git converts LF -> CRLF on checkout, the file can become unreadable.
+    Returns:
+      - path to use for loading
+      - optional temporary file path that should be deleted after loading
+    """
+    raw = model_path.read_bytes()
+    normalized = raw
+
+    # Some editors may prepend UTF-8 BOM, which breaks LightGBM model parser.
+    if normalized.startswith(b"\xef\xbb\xbf"):
+        normalized = normalized[3:]
+
+    # Windows CRLF checkout can invalidate tree byte offsets in text model.
+    if b"\r\n" in normalized:
+        normalized = normalized.replace(b"\r\n", b"\n")
+
+    if normalized == raw:
+        return model_path, None
+
+    # Prefer in-place repair.
+    try:
+        model_path.write_bytes(normalized)
+        return model_path, None
+    except OSError:
+        # Fallback for read-only model directories.
+        tmp = tempfile.NamedTemporaryFile(
+            mode="wb",
+            suffix=model_path.suffix,
+            prefix=f"{model_path.stem}.normalized.",
+            delete=False,
+        )
+        with tmp:
+            tmp.write(normalized)
+        return Path(tmp.name), Path(tmp.name)
+
+
 def _predict_all_horizons(
     model_dir: Path,
     base_features_df: pd.DataFrame,
@@ -328,7 +368,15 @@ def _predict_all_horizons(
                     .astype(float)
                 )
 
-        booster = lgb.Booster(model_file=str(model_path))
+        load_model_path, temp_model_path = _prepare_lightgbm_model_for_loading(model_path)
+        try:
+            booster = lgb.Booster(model_file=str(load_model_path))
+        finally:
+            if temp_model_path is not None:
+                try:
+                    temp_model_path.unlink(missing_ok=True)
+                except OSError:
+                    pass
         best_iteration = int(meta.get("best_iteration", 0))
         raw_prediction = booster.predict(
             model_input,
