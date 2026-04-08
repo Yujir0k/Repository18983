@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "next dev --webpack --disable-source-maps",
+    "dev": "node scripts/start-dev-no-fork.cjs",
     "dev:webpack": "next dev --webpack --disable-source-maps",
     "dev:turbo": "next dev --turbopack",
     "dev:lowmem": "node --max-old-space-size=1536 ./node_modules/next/dist/bin/next dev --webpack --disable-source-maps",
